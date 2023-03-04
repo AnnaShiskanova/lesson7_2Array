@@ -1,7 +1,7 @@
 ﻿Console.Clear();
 Console.WriteLine("1 - Task 47");
 Console.WriteLine("2 - Task 50");
-// // Console.WriteLine("3 - Task 49");
+Console.WriteLine("3 - Task 52");
 // // Console.WriteLine("4 - Task 51");
 // // Console.WriteLine("5 - Task 50");
 
@@ -18,10 +18,10 @@ switch(NumberOfTask)
     Task50();
     break;
 
-//     // case 3:
-//     // Console.Clear();
-//     // Task49();
-//     // break;
+    case 3:
+    Console.Clear();
+    Task52();
+    break;
 
 //     // case 4:
 //     // Console.Clear();
@@ -34,9 +34,9 @@ switch(NumberOfTask)
 //     // break;
 
         
-//     // default:
-//     // Console.WriteLine("Номер задачи введен неверно");
-//     // break;
+    default:
+    Console.WriteLine("Номер задачи введен неверно");
+    break;
     
 }
 
@@ -128,17 +128,57 @@ static void Task50()
         Viewer(array, ViewerNumber);
 }
 
+static void Task52()
+{
+    /*Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое 
+    элементов в каждом столбце.
+    Например, задан массив:
+    1 4 7 2
+    5 9 2 3
+    8 4 2 4
+    Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.*/
 
+    int[,] array = new int[4, 4];//размер просто написала, тк иного не задано условиями
+    
+    void FillArray(int[,] array)
+    {
+        for ( int i = 0; i < array.GetLength(0); i++)
+        {
+            Console.WriteLine();
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                
+                array[i, j] = new Random().Next(-10, 11);
+                Console.Write(array[i, j] + " ");
+            }
+        }
+    }
 
+    void ArithmeticMean(int[,] array)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+            {
+                double sum = 0;
+                Console.WriteLine();
+                for (int i = 0; i < array.GetLength(0); i++)
+                {
+                    sum += array[i, j];
+                }
+                Console.Write($"{ sum / array.GetLength(0)} ");
+            }
+        
 
+            
+           // Console.WriteLine($"Средняя арифметическая по столбцу {count} равна {Sum / count},{Sum % count}");                
 
+        
+        
+        
+        
+        
+    }
 
-
-/*Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
-
-Например, задан массив:
-1 4 7 2
-5 9 2 3
-8 4 2 4
-Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.*/
-
+    
+    FillArray(array);
+    ArithmeticMean(array);
+}
